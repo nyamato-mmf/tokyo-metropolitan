@@ -14,6 +14,7 @@ node_modules/
 _shapefile/
 _tif/
 _python
+_5-10km radius
 
 # ignore the following files:
 *.xlsx
