@@ -55,9 +55,8 @@ body { margin: 0; padding: 0; }
             <option value="fly-nyc">New York</option>
             <option value="fly-lon">London</option>
         </select>
-    </form>
+    </form>    
 </div>
-
 
 <div id="map"></div>
 
@@ -67,7 +66,7 @@ body { margin: 0; padding: 0; }
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/satellite-v9',
         projection: 'globe', // Display the map as a globe, since satellite-v9 defaults to Mercator
-        zoom: 11, // starting zoom
+        zoom: 12, // starting zoom
         center: [139.7527758040573, 35.68535529255434] // starting center
     });
 
@@ -108,6 +107,36 @@ body { margin: 0; padding: 0; }
             }
         });
 
+        //##### Fly to 機能 #####//
+        document.getElementById("fly").select.onchange = function() {
+            var target = document.getElementById("fly").select.value;
+            console.log(target)
+
+            switch (target) {
+                case "fly-tyo":
+                    map.flyTo({
+                    center: [139.7527758040573, 35.68535529255434],
+                    zoom: 12,
+                    essential: true
+                    });
+                    break;
+                case "fly-nyc":
+                    map.flyTo({
+                    center: [-73.98554260298089, 40.7581534610924],
+                    zoom: 12,
+                    essential: true
+                    });
+                    break;
+                case "fly-lon":
+                    map.flyTo({
+                    center: [-0.1280757371601969, 51.508110075964964],
+                    zoom: 12,
+                    essential: true
+                    });
+                    break;
+            }
+        };
+
         //##### Pop up 機能 #####//
         // Create a popup, but don't add it to the map yet.
         const popup = new mapboxgl.Popup({
@@ -139,37 +168,6 @@ body { margin: 0; padding: 0; }
         map.getCanvas().style.cursor = '';
         popup.remove();
         });
-
-
-        //##### Fly to 機能 #####//
-        document.getElementById("fly").select.onchange = function() {
-            var target = document.getElementById("fly").select.value;
-            console.log(target)
-
-            switch (target) {
-                case "fly-tyo":
-                    map.flyTo({
-                    center: [139.7527758040573, 35.68535529255434],
-                    zoom: 11,
-                    essential: true
-                    });
-                    break;
-                case "fly-nyc":
-                    map.flyTo({
-                    center: [-73.98554260298089, 40.7581534610924],
-                    zoom: 11,
-                    essential: true
-                    });
-                    break;
-                case "fly-lon":
-                    map.flyTo({
-                    center: [-0.1280757371601969, 51.508110075964964],
-                    zoom: 11,
-                    essential: true
-                    });
-                    break;
-            }
-        };
 
         //##### Navigation Control #####//
         map.addControl(new mapboxgl.NavigationControl());
