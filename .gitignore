@@ -13,3 +13,7 @@ node_modules/
 # ignore the following folders and files below:
 _shapefile/
 _tif/
+_python
+
+# ignore the following files:
+*.xlsx
