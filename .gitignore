@@ -9,3 +9,7 @@ log/*.log
 tmp/**
 node_modules/
 .sass-cache
+
+# ignore the following folders and files below:
+_shapefile/
+_tif/
