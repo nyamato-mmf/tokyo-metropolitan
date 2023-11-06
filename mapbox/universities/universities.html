@@ -48,7 +48,7 @@ body { margin: 0; padding: 0; }
 
 <!-- Sidebar -->
 <div id="sidebar">
-    <h1 class="indicator-title">Museums</h1>
+    <h1 class="indicator-title">Universities</h1>
     <form id="fly">
         <!-- Select a city to fly to -->
         <select name="select">
@@ -74,20 +74,20 @@ body { margin: 0; padding: 0; }
     map.on('load', () => {
 
         //##### 指標データ #####//
-        map.addSource('museums', {
+        map.addSource('universities', {
             type: 'geojson',
             // Use a URL for the value for the `data` property.
-            data: './geojson/museums_2020.geojson' 
+            data: './geojson/universities_2020.geojson' 
         });
 
         map.addLayer({
-            'id': 'museums-layer',
+            'id': 'universities-layer',
             'type': 'circle',
-            'source': 'museums',
+            'source': 'universities',
             'paint': {
                 'circle-radius': 5,
                 'circle-stroke-width': 1,
-                'circle-color': 'purple',
+                'circle-color': 'blue',
                 'circle-stroke-color': 'white'
             }
         });
@@ -145,13 +145,13 @@ body { margin: 0; padding: 0; }
         closeOnClick: false
         });
         
-        map.on('mouseenter', 'museums-layer', (e) => {
+        map.on('mouseenter', 'universities-layer', (e) => {
         // Change the cursor style as a UI indicator.
         map.getCanvas().style.cursor = 'pointer';
         
         // Copy coordinates array.
         const coordinates = e.features[0].geometry.coordinates.slice();      
-        const description = e.features[0].properties.Museum_EN;
+        const description = e.features[0].properties["Name"];
         
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
@@ -165,7 +165,7 @@ body { margin: 0; padding: 0; }
         popup.setLngLat(coordinates).setHTML(description).addTo(map);
         });
         
-        map.on('mouseleave', 'museums-layer', () => {
+        map.on('mouseleave', 'universities-layer', () => {
         map.getCanvas().style.cursor = '';
         popup.remove();
         });
