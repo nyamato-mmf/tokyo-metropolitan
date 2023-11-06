@@ -18,3 +18,4 @@ _5-10km radius
 
 # ignore the following files:
 *.xlsx
+_centre points.txt

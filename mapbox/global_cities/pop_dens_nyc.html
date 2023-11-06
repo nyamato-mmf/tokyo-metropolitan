@@ -64,7 +64,7 @@
                     'fill-extrusion-color': [
                         'interpolate',
                         ['linear'],
-                        ['get', 'Density'],
+                        ['get', 'PopDensNEW'],
                         0,
                         '#768C6D',
                         1000,
@@ -86,7 +86,7 @@
                     ],
 
                     // Get `fill-extrusion-height` from the source `height` property.
-                    'fill-extrusion-height': ['get', 'Density'],
+                    'fill-extrusion-height': ['get', 'PopDensNEW'],
 
                     // Get `fill-extrusion-base` from the source `base_height` property.['get', 'base_height']
                     'fill-extrusion-base': 0,
@@ -102,7 +102,7 @@
         map.on('click', 'density', function (e) {
             new mapboxgl.Popup()
                 .setLngLat(e.lngLat)
-                .setHTML(e.features[0].properties.name1 + ": " + parseInt(e.features[0].properties["Density"]).toLocaleString() + "人/㎢")
+                .setHTML(e.features[0].properties["NAME"] + ": " + parseInt(e.features[0].properties["PopDensNEW"]).toLocaleString() + "人/㎢")
                 .addTo(map);
         });
 

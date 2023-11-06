@@ -102,7 +102,7 @@
         map.on('click', 'density', function (e) {
             new mapboxgl.Popup()
                 .setLngLat(e.lngLat)
-                .setHTML(e.features[0].properties.name1 + ": " + parseInt(e.features[0].properties["Pop_dens"]).toLocaleString() + "人/㎢")
+                .setHTML(e.features[0].properties["geo_label"] + ": " + parseInt(e.features[0].properties["Pop_dens"]).toLocaleString() + "人/㎢")
                 .addTo(map);
         });
 
